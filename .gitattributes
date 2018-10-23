@@ -1,0 +1,8 @@
+*.* text eol=lf
+
+*.cmd eol=crlf
+
+*.mp3 binary
+*.png binary
+*.sqlite binary
+*.wav binary
