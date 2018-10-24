@@ -34,6 +34,10 @@ exports.exec = async (Bastion, message, args) => {
         return Bastion.emit('commandUsage', message, this.help);
       }
       citedMessage = await channel.fetchMessage(args.message);
+      let contentReg = citedMessage.content;
+      contentReg = contentReg.replace(/```[a-z]*\n/, '');
+      contentReg = contentReg.replace(/[a-z]*\n```/, '');
+      citedMessage.content = contentReg;
     }
 
     let yamlFile;
@@ -157,7 +161,7 @@ exports.exec = async (Bastion, message, args) => {
 };
 
 exports.config = {
-  aliases: [ 'sintax' ],
+  aliases: [ 'sintax', 'syntax' ],
   enabled: true,
   argsDefinitions: [
     { name: 'message', type: String, defaultOption: true }
@@ -169,6 +173,6 @@ exports.help = {
   botPermission: '',
   userTextPermission: '',
   userVoicePermission: '',
-  usage: 'yaml <MESSAGE_ID>',
+  usage: [ 'yaml <MESSAGE_ID>', 'yaml above' ],
   example: [ 'yaml 221133446677558899' ]
 };
