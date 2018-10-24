@@ -2,37 +2,87 @@
  * @file define command
  * @license MIT
  */
-const https = require('https');
-const fs = require('fs');
 const yamlLint = require('yaml-lint');
+const download = require('download');
 
 exports.exec = async (Bastion, message, args) => {
   try {
-    if (!args.message || !(parseInt(args.message) < 9223372036854775807)) {
-      /**
-      * The command was ran with invalid parameters.
-      * @fires commandUsage
-      */
-      return Bastion.emit('commandUsage', message, this.help);
-    }
+
 
     let channel = message.mentions.channels.first();
     if (!channel) {
       channel = message.channel;
     }
 
-    let citedMessage = await channel.fetchMessage(args.message);
+    let citedMessage;
+
+    if (args.message === 'above') {
+      let map = await channel.fetchMessages({ limit: 2 });
+      let array = Array.from(map);
+      citedMessage = array[1][1];
+      let contentReg = citedMessage.content;
+      contentReg = contentReg.replace(/```[a-z]*\n/, '');
+      contentReg = contentReg.replace(/[a-z]*\n```/, '');
+      citedMessage.content = contentReg;
+    }
+    else {
+      if (!args.message || !(parseInt(args.message) < 9223372036854775807)) {
+        /**
+         * The command was ran with invalid parameters.
+         * @fires commandUsage
+         */
+        return Bastion.emit('commandUsage', message, this.help);
+      }
+      citedMessage = await channel.fetchMessage(args.message);
+    }
 
     let yamlFile;
     if (citedMessage.attachments.size) {
       if (citedMessage.attachments.first().filename.includes('.yaml')) {
         let url = citedMessage.attachments.first().url;
-        let name = citedMessage.attachments.first().filename;
-        const file = fs.createWriteStream(name);
-        https.get(url, response => {
-          response.pipe(file);
+        let options = {
+          directory: 'data',
+          filename: 'tmp.yaml'
+        };
+        yamlFile = true;
+        download(url, options).then( data => {
+          // fs.createWriteStream('data/tmp.yaml', data);
+          if (yamlFile) {
+            yamlLint.lint(data).then( () => {
+              message.channel.send({
+                embed: {
+                  color: Bastion.colors.GREEN,
+                  title: ':white_check_mark: **Attachment Results**',
+                  fields: [
+                    {
+                      name: 'Link to YAML',
+                      value: `https://discordapp.com/channels/${citedMessage.guild.id}/${citedMessage.channel.id}/${citedMessage.id}`
+                    }
+                  ]
+                }
+              }).catch(e => {
+                Bastion.log.error(e);
+              });
+            }).catch((error) => {
+              message.channel.send({
+                embed: {
+                  color: Bastion.colors.RED,
+                  title: ':x: **Attachment Results**',
+                  description: `Read the result below to fix your yaml \n \`\`\` ${error} \`\`\``,
+                  fields: [
+                    {
+                      name: 'Link to YAML',
+                      value: `https://discordapp.com/channels/${citedMessage.guild.id}/${citedMessage.channel.id}/${citedMessage.id}`
+                    }
+                  ]
+                }
+              }).catch(e => {
+                Bastion.log.error(e);
+              });
+            });
+          }
         });
-        yamlFile = file;
+
       }
     }
 
@@ -56,42 +106,7 @@ exports.exec = async (Bastion, message, args) => {
         Bastion.log.error(e);
       });
     }
-
-    if (yamlFile) {
-      yamlLint.lintFile(yamlFile).then( () => {
-        message.channel.send({
-          embed: {
-            color: Bastion.colors.GREEN,
-            title: ':white_check_mark: **test attachments**',
-            fields: [
-              {
-                name: 'Link to YAML',
-                value: `https://discordapp.com/channels/${citedMessage.guild.id}/${citedMessage.channel.id}/${citedMessage.id}`
-              }
-            ]
-          }
-        }).catch(e => {
-          Bastion.log.error(e);
-        });
-      }).catch((error) => {
-        message.channel.send({
-          embed: {
-            color: Bastion.colors.RED,
-            title: ':x: **test attachments**',
-            description: `Read the result below to fix your yaml \n ${yamlFile} \n \`\`\` ${error} \`\`\``,
-            fields: [
-              {
-                name: 'Link to YAML',
-                value: `https://discordapp.com/channels/${citedMessage.guild.id}/${citedMessage.channel.id}/${citedMessage.id}`
-              }
-            ]
-          }
-        }).catch(e => {
-          Bastion.log.error(e);
-        });
-      });
-    }
-    else {
+    if (!yamlFile) {
       yamlLint.lint(citedMessage.content).then( () => {
         message.channel.send({
           embed: {

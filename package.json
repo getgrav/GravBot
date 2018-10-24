@@ -29,6 +29,8 @@
     "command-line-args": "github:k3rn31p4nic/command-line-args",
     "cron": "~1.4.1",
     "discord.js": "~11.4.2",
+    "download": "^7.1.0",
+    "download-file": "^0.1.5",
     "gamedig": "~1.0.46",
     "hirez.js": "~2.0.0",
     "https": "^1.0.0",
