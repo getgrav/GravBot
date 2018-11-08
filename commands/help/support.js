@@ -8,13 +8,13 @@ exports.exec = (Bastion, message) => {
   message.channel.send({
     embed: {
       color: Bastion.colors.GOLD,
-      title: 'Bastion HQ',
-      url: 'https://discord.gg/fzx8fkt',
-      description: 'Need help or support with Bastion Discord Bot?\nJoin Bastion Support Server for any help you need.\nhttps://discord.gg/fzx8fkt',
+      title: 'Grav Community',
+      url: 'https://discord.gg/amBAjn7',
+      description: 'Need help or support with Grav?\nJoin the Support Server for any help you need.\nhttps://discord.gg/amBAjn7',
       fields: [
         {
           name: 'Website',
-          value: 'https://bastionbot.org/'
+          value: 'https://getgrav.org/'
         }
       ]
     }
@@ -30,7 +30,7 @@ exports.config = {
 
 exports.help = {
   name: 'support',
-  description: 'Sends the invite link to Bastion HQ.',
+  description: 'Sends the invite link to Grav Community.',
   botPermission: '',
   userTextPermission: '',
   userVoicePermission: '',

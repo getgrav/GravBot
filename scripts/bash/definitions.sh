@@ -9,7 +9,7 @@ then
 fi
 
 
-NAME="BastionBot";
+NAME="GravBot";
 
 NC="\\033[0m";
 RED="\\033[0;31m";

@@ -58,7 +58,7 @@ exports.exec = async (Bastion, message) => {
     }
 
     if (Bastion.user.id === '267035345537728512') {
-      if (message.guild.id === specialIDs.bastionGuild) {
+      if (message.guild.id === specialIDs.gravGuild) {
         if (message.member && message.member.roles.has(specialIDs.patronsRole)) {
           rewardAmount += 500;
         }

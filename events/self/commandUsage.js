@@ -13,7 +13,7 @@ module.exports = (message, command) => {
       fields: [
         {
           name: 'Get Help',
-          value: `Use the \`${message.guild.prefix[0]}help ${command.name}\` command to see usage and example of the \`${command.name}\` command.\nYou can also join **Bastion HQ** and our amazing support staff will help you out: https://discord.gg/fzx8fkt`
+          value: `Use the \`${message.guild.prefix[0]}help ${command.name}\` command to see usage and example of the \`${command.name}\` command.`
         }
       ]
     }

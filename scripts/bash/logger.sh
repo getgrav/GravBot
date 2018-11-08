@@ -7,7 +7,7 @@ fi
 
 
 function print::message () {
-  echo -e "${CYAN}[BASTION]:${NC} $*"
+  echo -e "${CYAN}[GRAVBOT]:${NC} $*"
 }
 
 function print::info () {

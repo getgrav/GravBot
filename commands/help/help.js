@@ -3,6 +3,7 @@
  * @author Sankarsan Kampa (a.k.a k3rn31p4nic)
  * @license GPL-3.0
  */
+const specialIDs = xrequire('./assets/specialIDs.json');
 
 exports.exec = async (Bastion, message, args) => {
   try {
@@ -98,15 +99,11 @@ exports.exec = async (Bastion, message, args) => {
           title: 'Help',
           description: `To get the list of commands, type \`${message.guild.prefix[0]}commands\`.` +
                        `\nTo get help about a specific command, type \`${message.guild.prefix[0]}help <command_name>\`.` +
-                       `\n\nNeed help or support with Bastion Bot?\n${message.guild.id === '267022940967665664' ? 'Ask for help in the <#267022940967665664> channel.' : 'Join [**Bastion HQ**](https://discord.gg/fzx8fkt) for testing the commands or any help you need with the bot or maybe just for fun.\nhttps://discord.gg/fzx8fkt'}`,
+                       `\n\nNeed help or support with Grav?\n${message.guild.id === specialIDs.gravGuild ? 'Ask for help in the <#' + specialIDs.helpChannel + '> channel.' : 'Join the [**Grav Community**](https://discord.gg/amBAjn7)'}`,
           fields: [
             {
-              name: 'Bastion HQ Invite Link',
-              value: 'https://discord.gg/fzx8fkt'
-            },
-            {
-              name: 'Bastion Bot Invite Link',
-              value: `https://discordapp.com/oauth2/authorize?client_id=${Bastion.user.id}&scope=bot&permissions=2146958463`
+              name: 'Grav Community Invite Link',
+              value: 'https://discord.gg/amBAjn7'
             }
           ],
           thumbnail: {

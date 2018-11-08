@@ -144,7 +144,7 @@ exports.help = {
  */
 async function getUserIcon(user) {
   try {
-    const bastionGuildID = specialIDs.bastionGuild;
+    const bastionGuildID = specialIDs.gravGuild;
     const bastionGuild = user.client.guilds.get(bastionGuildID);
     if (!bastionGuild) return;
     const bastionGuildMember = await user.client.utils.fetchMember(bastionGuild, user.id);

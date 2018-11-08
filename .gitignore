@@ -121,3 +121,5 @@ jspm_packages
 
 # Yarn Integrity file
 .yarn-integrity
+/.idea
+/data/GravBot.db
