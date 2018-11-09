@@ -33,7 +33,6 @@ exports.exec = async (Bastion, message, args) => {
       embed: {
         color: Bastion.colors.GOLD,
         title: 'List of Commands',
-        description: 'To get a complete list of all the commands with details, visit [my website](https://bastionbot.org/) and check out the commands section: https://bastionbot.org/commands.',
         fields: fields,
         footer: {
           text: `A Total of ${Bastion.commands.size} Commands!`
@@ -43,7 +42,7 @@ exports.exec = async (Bastion, message, args) => {
 
     message.channel.send({
       embed: {
-        description: `${message.author} Check your DM from me, I've sent you the list of commands${args.module ? ` in ${args.module} module` : ''}. You can also check out the commands section of [my website](https://bastionbot.org/) for the complete list of commands with details: https://bastionbot.org/commands`
+        description: `${message.author} Check your DM from me, I've sent you the list of commands${args.module ? ` in ${args.module} module` : ''}.`
       }
     }).catch(e => {
       Bastion.log.error(e);
@@ -54,7 +53,7 @@ exports.exec = async (Bastion, message, args) => {
       message.channel.send({
         embed: {
           color: Bastion.colors.RED,
-          description: `${message.author} You need to **allow Direct Messages from your Privacy Settings** so that I'll be able to DM you with the commands.\nIf you don't prefer to change your privacy settings, you can check out the commands section of [my website](https://bastionbot.org/) for the complete list of commands with details: https://bastionbot.org/commands`
+          description: `${message.author} You need to **allow Direct Messages from your Privacy Settings** so that I'll be able to DM you with the commands.`
         }
       }).catch(e => {
         Bastion.log.error(e);

@@ -7,31 +7,26 @@
 exports.exec = (Bastion, message) => {
   message.channel.send({
     embed: {
-      color: Bastion.colors.DARK_GREEN,
-      title: 'Support Bastion\'s development',
-      url: 'https://bastionbot.org/donate',
+      color: Bastion.colors.DARK_PURPLE,
+      title: 'Support Grav\'s development',
+      url: 'https://opencollective.com/grav',
       description: '**Share your appreciation and get cool rewards!**' +
-                   '\nDonate to support the development of Bastion and keep it running forever.' +
-                   '\n\nYou can donate via the methods below and get the rewards as mentioned in our Patreon tiers.',
+                   '\nDonate to support the development of Grav and keep it running forever.' +
+                   '\n\nYou can donate via the methods below and get the rewards as mentioned in our tiers.',
       fields: [
         {
-          name: 'Patreon',
-          value: 'You can pledge for The Bastion Bot Project on Patreon:'
-                + '\nhttps://patreon.com/bastionbot'
+          name: 'Open Collective',
+          value: 'You can pledge $2+/month here:'
+            + '\nhttps://opencollective.com/grav/order/1152'
         },
         {
-          name: 'PayPal',
-          value: 'You can send one-off donations via PayPal:'
-                + '\nhttps://paypal.me/snkrsnkampa'
-        },
-        {
-          name: 'Cryptocurrencies',
-          value: 'You can send one-off donations with Cryptocurrencies:'
-                + '\nhttps://commerce.coinbase.com/checkout/ff8b08ec-5d39-4910-89cd-8267cd5c3c54'
+          name: 'Sponsors',
+          value: 'Become a sponsor and get your logo on our README on Github with a link to your site.'
+              + '\nhttps://opencollective.com/grav/order/1153'
         }
       ],
       footer: {
-        text: 'If everyone using Bastion gave $1, we could keep Bastion thriving for months to come.'
+        text: 'If everyone using Grav gave $1, we could keep Grav thriving for months to come. Want to read more?'
       }
     }
   }).catch(e => {
@@ -46,7 +41,7 @@ exports.config = {
 
 exports.help = {
   name: 'donate',
-  description: 'Instructions on how to financially support the development of the Bastion Bot project.',
+  description: 'Instructions on how to financially support the development of Grav.',
   botPermission: '',
   userTextPermission: '',
   userVoicePermission: '',
