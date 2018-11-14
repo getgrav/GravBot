@@ -29,8 +29,7 @@ module.exports = async Bastion => {
         nickname: member.nickname || member.user.username,
         status: member.presence.status,
         roles: member.roles.map(role => role.name.replace(/ +/g, '-').toLowerCase()),
-        avatar_url: member.user.avatarURL.replace(/size=\d+$/, 'size=64'),
-        avatar: member.user.avatar,
+        avatar_url: member.user.avatar ? member.user.avatarURL.replace(/size=\d+$/, 'size=64') : 'https://cdn.discordapp.com/embed/avatars/1.png',
         id: member.id
     }));
 

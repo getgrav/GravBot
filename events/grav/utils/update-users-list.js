@@ -49,8 +49,7 @@ exports.updateCounts = ({ type, member, oldMember, newMember }) => {
             nickname: user.nickname || user.user.username,
             status: user.presence.status,
             roles: user.roles.map(role => role.name.replace(/ +/g, '-').toLowerCase()),
-            avatar_url: user.user.avatarURL.replace(/size=\d+$/, 'size=64'),
-            avatar: user.user.avatar,
+            avatar_url: user.user.avatar ? user.user.avatarURL.replace(/size=\d+$/, 'size=64') : 'https://cdn.discordapp.com/embed/avatars/1.png',
             id: user.id
         };
 
