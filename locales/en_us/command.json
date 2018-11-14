@@ -952,5 +952,12 @@
   },
   "zalgolize": {
     "description": "Sends the same message that you had sent, but zalgolized."
+  },
+
+  "users": {
+    "description": "Shows the users count."
+  },
+  "gpm": {
+    "description": "Your best friend GPM. Perform GPM commands"
   }
 }

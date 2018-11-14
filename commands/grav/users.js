@@ -1,4 +1,7 @@
 /**
+ * @file users command
+ * @author Djamil Legato @ Trilby Media, LLC
+ * @license GPL-3.0
  */
 
 exports.exec = async (Bastion, message) => {
@@ -48,7 +51,7 @@ exports.config = {
 
 exports.help = {
     name: 'users',
-    description: 'Shows users count.',
+    description: 'Shows the users count.',
     botPermission: '',
     userTextPermission: '',
     userVoicePermission: '',

@@ -581,6 +581,11 @@ decompress-response@^3.3.0:
   dependencies:
     mimic-response "^1.0.0"
 
+deep-diff@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/deep-diff/-/deep-diff-1.0.2.tgz#afd3d1f749115be965e89c63edc7abb1506b9c26"
+  integrity sha512-aWS3UIVH+NPGCD1kki+DCU9Dua032iSsO43LqQpcs4R3+dVv7tX0qBGjiVHJHjplsoUM2XRO/KB92glqc68awg==
+
 deep-extend@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.6.0.tgz#c4fa7c95404a17a9c3e8ca7e1537312b736330ac"
@@ -913,6 +918,11 @@ file-entry-cache@^2.0.0:
   dependencies:
     flat-cache "^1.2.1"
     object-assign "^4.0.1"
+
+filesize@^3.6.1:
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/filesize/-/filesize-3.6.1.tgz#090bb3ee01b6f801a8a8be99d31710b3422bb317"
+  integrity sha512-7KjR1vv6qnicaPMi1iiTcI85CyYwRO/PSFCu6SvqL8jN2Wjt/NIYQTFtFs7fSDCYOstUkEWIQGFUg5YZQfjlcg==
 
 find-replace@^1.0.3:
   version "1.0.3"
@@ -1630,7 +1640,7 @@ lru-cache@^2.5.0:
   resolved "https://registry.yarnpkg.com/lru-cache/-/lru-cache-2.7.3.tgz#6d4524e8b955f95d4f5b58851ce21dd72fb4e952"
   integrity sha1-bUUk6LlV+V1PW1iFHOId1y+06VI=
 
-lzutf8@~0.5.5:
+lzutf8@^0.5.5, lzutf8@~0.5.5:
   version "0.5.5"
   resolved "https://registry.yarnpkg.com/lzutf8/-/lzutf8-0.5.5.tgz#3f677ef865eae628fca5f8c6a423ae631371a71c"
   integrity sha512-x4AdRtP0ETRe0BW8V+TfW+8rOF5t3vWU/Z52twUqDRf0OiEuXiLvXNN6Zm8biFCTI9ffXBZb++THAjfkJ559Nw==
@@ -2564,12 +2574,13 @@ terraformer@~1.0.5:
   optionalDependencies:
     "@types/geojson" "^1.0.0"
 
-"tesseract@github:TheBastionBot/Tesseract#v0.0.5":
-  version "0.0.5"
-  resolved "https://codeload.github.com/TheBastionBot/Tesseract/tar.gz/e854ed443ca9afb47427dd8b8a16b34e7f07c69a"
+"tesseract@github:TheBastionBot/Tesseract#v0.0.9":
+  version "0.0.9"
+  resolved "https://codeload.github.com/TheBastionBot/Tesseract/tar.gz/1654b156a07ee515e94cf16b352b64b5f3770f37"
   dependencies:
     discord.js "~11.4.2"
-    yaml "^1.0.0"
+    lzutf8 "^0.5.5"
+    yaml "^1.0.1"
 
 test-value@^2.1.0:
   version "2.1.0"
@@ -2824,10 +2835,10 @@ yallist@^3.0.0, yallist@^3.0.2:
   resolved "https://registry.yarnpkg.com/yallist/-/yallist-3.0.2.tgz#8452b4bb7e83c7c188d8041c1a837c773d6d8bb9"
   integrity sha1-hFK0u36Dx8GI2AQcGoN8dz1ti7k=
 
-yaml@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.0.0.tgz#9d428cd4641c87ff4b17b2d4f4ab96bb6dd17154"
-  integrity sha512-HLMg8IQRQLLPZ/tVtR0j5ShAh4HJKt8soYsu0Fn3Y5eoIFJoh1cs1mvvOnRD236mjeBDarlk5Ng/b/IHQs+5Rg==
+yaml@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/yaml/-/yaml-1.0.1.tgz#3a8b01e4dda66445904ee743a95951d67a47a0c5"
+  integrity sha512-ysU56qumPH0tEML2hiFVAo+rCnG/0+oO2Ye3fN4c40GBN7kX1fYhDqSoX7OohimcI/Xkkr1DdaUlg5+afinRqA==
 
 yauzl@2.4.1:
   version "2.4.1"

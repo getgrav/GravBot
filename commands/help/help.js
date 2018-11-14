@@ -33,6 +33,7 @@ exports.exec = async (Bastion, message, args) => {
           channel = message.channel;
         }
 
+        console.debug(Bastion.i18n.command(message.guild.language, command.help.name).description);
         await channel.send({
           embed: {
             color: Bastion.colors.GOLD,

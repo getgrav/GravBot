@@ -16,6 +16,7 @@ const path = xrequire('path');
 module.exports = Bastion => {
   const DISCORD_EVENTS_PATH = './events/discord/';
   const SELF_EVENTS_PATH = './events/self/';
+  const GRAV_EVENTS_PATH = './events/grav/';
 
   /* eslint-disable no-sync */
   let DiscordEvents = fs.readdirSync(DISCORD_EVENTS_PATH).
@@ -24,6 +25,10 @@ module.exports = Bastion => {
 
   let SelfEvents = fs.readdirSync(SELF_EVENTS_PATH).
     filter(file => !fs.statSync(path.resolve(SELF_EVENTS_PATH, file)).isDirectory()).
+    filter(file => file.endsWith('.js'));
+
+  let GravEvents = fs.readdirSync(GRAV_EVENTS_PATH).
+    filter(file => !fs.statSync(path.resolve(GRAV_EVENTS_PATH, file)).isDirectory()).
     filter(file => file.endsWith('.js'));
   /* eslint-enable no-sync */
 
@@ -42,5 +47,15 @@ module.exports = Bastion => {
     event = event.replace(/\.js$/i, '');
 
     Bastion.on(event, xrequire(SELF_EVENTS_PATH, event));
+  }
+
+  for (let event of GravEvents) {
+    event = event.replace(/\.js$/i, '');
+    if (event === 'ready') {
+      Bastion.on(event, () => xrequire(GRAV_EVENTS_PATH, event)(Bastion));
+    }
+    else {
+      Bastion.on(event, xrequire(GRAV_EVENTS_PATH, event));
+    }
   }
 };
