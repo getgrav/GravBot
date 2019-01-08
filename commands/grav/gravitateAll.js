@@ -21,7 +21,7 @@ exports.exec = async (Bastion, message, args) => {
         }
 
         const members = message.guild.members
-            .filter(m => !m.user.bot && !message.member.roles.filter(role => role.name === 'Gravitator').size);
+            .filter(m => !m.user.bot && !m.roles.filter(role => role.name === 'Gravitator').size);
 
         members.map(member => member.addRole(role));
         message.channel
