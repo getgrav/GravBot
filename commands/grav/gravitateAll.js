@@ -23,7 +23,7 @@ exports.exec = async (Bastion, message, args) => {
         const members = message.guild.members
             .filter(m => !m.user.bot && !m.roles.filter(role => role.name === 'Gravitator').size);
 
-        members.map(member => member.addRole(role));
+        members.every(member => member.addRole(role));
         message.channel
         .send(`**${message.author.username}**, role **${role.name}** was added to ${members.size} members`)
         .catch(e => {
