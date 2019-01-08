@@ -17,18 +17,22 @@ exports.exec = async (Bastion, message, args) => {
             * Error condition is encountered.
             * @fires error
             */
-           return Bastion.emit('error', '', Bastion.i18n.error(message.guild.language, 'roleNotFound'), message.channel);
+            return Bastion.emit('error', '', Bastion.i18n.error(message.guild.language, 'roleNotFound'), message.channel);
         }
 
-        const members = message.guild.members
-            .filter(m => !m.user.bot && !m.roles.filter(role => role.name === 'Gravitator').size);
+        message.guild.fetchMembers()
+            .then((guild) => {
+                const list = guild.members.filter(m => !m.user.bot && !m.roles.filter(role => role.name === 'Gravitator').size);
 
-        members.every(member => member.addRole(role));
-        message.channel
-        .send(`**${message.author.username}**, role **${role.name}** was added to ${members.size} members`)
-        .catch(e => {
-            Bastion.log.error(e);
-        });
+                list.every(member => member.addRole(role));
+
+
+                message.channel
+                    .send(`**${message.author.username}**, role **${role.name}** was added to ${list.size} members`)
+                    .catch(e => {
+                        Bastion.log.error(e);
+                    });
+            });
 
         let reason = 'No reason given';
 
