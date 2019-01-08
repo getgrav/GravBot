@@ -20,7 +20,7 @@ exports.exec = async (Bastion, message, args) => {
            return Bastion.emit('error', '', Bastion.i18n.error(message.guild.language, 'roleNotFound'), message.channel);
         }
 
-        message.guild.members.filter(m => !m.user.bot).map(async member => await member.addRole(role));
+        message.guild.members.filter(m => !m.user.bot).map(member => member.addRole(role));
         message.channel
         .send(`**${message.author.username}**, role **${role.name}** was added to all members`)
         .catch(e => {
