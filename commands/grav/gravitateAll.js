@@ -20,9 +20,12 @@ exports.exec = async (Bastion, message, args) => {
            return Bastion.emit('error', '', Bastion.i18n.error(message.guild.language, 'roleNotFound'), message.channel);
         }
 
-        message.guild.members.filter(m => !m.user.bot).map(member => member.addRole(role));
+        const members = message.guild.members
+            .filter(m => !m.user.bot && !message.member.roles.filter(role => role.name === 'Gravitator').size);
+
+        members.map(member => member.addRole(role));
         message.channel
-        .send(`**${message.author.username}**, role **${role.name}** was added to all members`)
+        .send(`**${message.author.username}**, role **${role.name}** was added to ${members.size} members`)
         .catch(e => {
             Bastion.log.error(e);
         });
