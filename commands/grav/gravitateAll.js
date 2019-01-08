@@ -6,8 +6,8 @@
 
 exports.exec = async (Bastion, message, args) => {
     try {
-        let member = await Bastion.utils.fetchMember(message.guild, message.author);
-        if (message.author.id !== message.guild.ownerID && message.member.highestRole.comparePositionTo(member.highestRole) <= 0) {
+        const permissions = ['Admin', 'Grav Core Team', 'Pro'];
+        if (!message.member.roles.filter(role => permissions.includes(role.name)).size) {
             return Bastion.log.info(Bastion.i18n.error(message.guild.language, 'lowerRole'));
         }
 
