@@ -1,0 +1,8 @@
+# Project dependencies
+node_modules
+.cache/
+
+# Misc
+.DS_Store
+yarn-error.log
+package-lock.json

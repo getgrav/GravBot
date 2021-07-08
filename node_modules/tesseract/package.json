@@ -1,0 +1,35 @@
+{
+  "name": "tesseract",
+  "version": "0.0.9",
+  "description": "The heart and soul of the Bastion bot.",
+  "main": "./dist/Tesseract.js",
+  "scripts": {
+    "gulp": "./node_modules/.bin/gulp",
+    "compile": "./node_modules/.bin/tsc",
+    "build": "npm run gulp && npm run tsc",
+    "start": "node .",
+    "test": "echo \"No tests provided.\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheBastionBot/Tesseract.git"
+  },
+  "author": "Sankarsan Kampa (a.k.a. k3rn31p4nic)",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/TheBastionBot/Tesseract/issues"
+  },
+  "homepage": "https://github.com/TheBastionBot/Tesseract#README",
+  "dependencies": {
+    "discord.js": "~11.4.2",
+    "lzutf8": "^0.5.5",
+    "yaml": "^1.0.1"
+  },
+  "devDependencies": {
+    "@types/node": "^10.12.3",
+    "@types/yaml": "^1.0.0",
+    "gulp": "^3.9.1",
+    "gulp-typescript": "^5.0.0-alpha.3",
+    "typescript": "^3.1.6"
+  }
+}
